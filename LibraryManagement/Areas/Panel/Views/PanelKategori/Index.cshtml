@@ -1,0 +1,35 @@
+﻿
+@model IEnumerable<LibraryManagement.Models.Kategori>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Panel/Views/Shared/_LayoutPanel.cshtml";
+}
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Kategori Listesi</h4>
+
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Kategori Adı</th>
+                        <th>Açıklama</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var category in Model)
+                    {
+                        <tr>
+                            <td>@category.KategoriAdi</td>
+                            <td>@category.KategoriAciklama</td>
+                            <td> <a class="btn btn-warning btn-fw" href="/PanelKategori/Guncelle/@category.KategoriID">Güncelle</a></td>
+                            <td> <a class="btn btn-danger btn-fw btnKategoriSil" style="color:white" data-id="@category.KategoriID" id="silinecek">Sil</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

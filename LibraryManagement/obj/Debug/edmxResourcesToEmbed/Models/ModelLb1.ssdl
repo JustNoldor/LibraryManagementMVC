@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LibraryDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Emanet">
+    <Key>
+      <PropertyRef Name="EmanetID" />
+    </Key>
+    <Property Name="EmanetID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmanetKitapId" Type="int" Nullable="false" />
+    <Property Name="EmanetVerenId" Type="int" Nullable="false" />
+    <Property Name="EmanetAlanId" Type="int" Nullable="false" />
+    <Property Name="VerilisTarihi" Type="datetime" />
+    <Property Name="GeriAlisTarihi" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Kategori">
+    <Key>
+      <PropertyRef Name="KategoriID" />
+    </Key>
+    <Property Name="KategoriID" Type="int" Nullable="false" />
+    <Property Name="KategoriAdi" Type="nvarchar" MaxLength="50" />
+    <Property Name="KategoriAciklama" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Kitaplar">
+    <Key>
+      <PropertyRef Name="KitapID" />
+    </Key>
+    <Property Name="KitapID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ISBN" Type="int" Nullable="false" />
+    <Property Name="KitapAdi" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="KitapAciklama" Type="nvarchar(max)" />
+    <Property Name="KitapYazarId" Type="int" Nullable="false" />
+    <Property Name="Adet" Type="int" />
+    <Property Name="KategoriID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Rol">
+    <Key>
+      <PropertyRef Name="RolID" />
+    </Key>
+    <Property Name="RolID" Type="int" Nullable="false" />
+    <Property Name="KullaniciId" Type="int" />
+    <Property Name="RolAdi" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Uye">
+    <Key>
+      <PropertyRef Name="UyeID" />
+    </Key>
+    <Property Name="UyeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UyeNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Parola" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UyeAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UyeSoyadi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="EklenmeTarihi" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Yazarlar">
+    <Key>
+      <PropertyRef Name="YazarID" />
+    </Key>
+    <Property Name="YazarID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="YazarAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="YazarSoyadi" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Yonetici">
+    <Key>
+      <PropertyRef Name="YoneticiID" />
+    </Key>
+    <Property Name="YoneticiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Parola" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Adi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Soyadi" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Emanet_Kitaplar">
+    <End Role="Kitaplar" Type="Self.Kitaplar" Multiplicity="1" />
+    <End Role="Emanet" Type="Self.Emanet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Kitaplar">
+        <PropertyRef Name="KitapID" />
+      </Principal>
+      <Dependent Role="Emanet">
+        <PropertyRef Name="EmanetKitapId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Emanet_Uye">
+    <End Role="Uye" Type="Self.Uye" Multiplicity="1" />
+    <End Role="Emanet" Type="Self.Emanet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Uye">
+        <PropertyRef Name="UyeID" />
+      </Principal>
+      <Dependent Role="Emanet">
+        <PropertyRef Name="EmanetAlanId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Emanet_Yonetici">
+    <End Role="Yonetici" Type="Self.Yonetici" Multiplicity="1" />
+    <End Role="Emanet" Type="Self.Emanet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Yonetici">
+        <PropertyRef Name="YoneticiID" />
+      </Principal>
+      <Dependent Role="Emanet">
+        <PropertyRef Name="EmanetVerenId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kategori_Kitaplar">
+    <End Role="Kitaplar" Type="Self.Kitaplar" Multiplicity="1" />
+    <End Role="Kategori" Type="Self.Kategori" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Kitaplar">
+        <PropertyRef Name="KitapID" />
+      </Principal>
+      <Dependent Role="Kategori">
+        <PropertyRef Name="KategoriID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Kitaplar_Yazarlar">
+    <End Role="Yazarlar" Type="Self.Yazarlar" Multiplicity="1" />
+    <End Role="Kitaplar" Type="Self.Kitaplar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Yazarlar">
+        <PropertyRef Name="YazarID" />
+      </Principal>
+      <Dependent Role="Kitaplar">
+        <PropertyRef Name="KitapYazarId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Rol_Uye">
+    <End Role="Uye" Type="Self.Uye" Multiplicity="0..1" />
+    <End Role="Rol" Type="Self.Rol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Uye">
+        <PropertyRef Name="UyeID" />
+      </Principal>
+      <Dependent Role="Rol">
+        <PropertyRef Name="KullaniciId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Rol_Yonetici">
+    <End Role="Yonetici" Type="Self.Yonetici" Multiplicity="0..1" />
+    <End Role="Rol" Type="Self.Rol" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Yonetici">
+        <PropertyRef Name="YoneticiID" />
+      </Principal>
+      <Dependent Role="Rol">
+        <PropertyRef Name="KullaniciId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LibraryDBModelStoreContainer">
+    <EntitySet Name="Emanet" EntityType="Self.Emanet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kategori" EntityType="Self.Kategori" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Kitaplar" EntityType="Self.Kitaplar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rol" EntityType="Self.Rol" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Uye" EntityType="Self.Uye" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Yazarlar" EntityType="Self.Yazarlar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Yonetici" EntityType="Self.Yonetici" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Emanet_Kitaplar" Association="Self.FK_Emanet_Kitaplar">
+      <End Role="Kitaplar" EntitySet="Kitaplar" />
+      <End Role="Emanet" EntitySet="Emanet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Emanet_Uye" Association="Self.FK_Emanet_Uye">
+      <End Role="Uye" EntitySet="Uye" />
+      <End Role="Emanet" EntitySet="Emanet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Emanet_Yonetici" Association="Self.FK_Emanet_Yonetici">
+      <End Role="Yonetici" EntitySet="Yonetici" />
+      <End Role="Emanet" EntitySet="Emanet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kategori_Kitaplar" Association="Self.FK_Kategori_Kitaplar">
+      <End Role="Kitaplar" EntitySet="Kitaplar" />
+      <End Role="Kategori" EntitySet="Kategori" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Kitaplar_Yazarlar" Association="Self.FK_Kitaplar_Yazarlar">
+      <End Role="Yazarlar" EntitySet="Yazarlar" />
+      <End Role="Kitaplar" EntitySet="Kitaplar" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Rol_Uye" Association="Self.FK_Rol_Uye">
+      <End Role="Uye" EntitySet="Uye" />
+      <End Role="Rol" EntitySet="Rol" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Rol_Yonetici" Association="Self.FK_Rol_Yonetici">
+      <End Role="Yonetici" EntitySet="Yonetici" />
+      <End Role="Rol" EntitySet="Rol" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
