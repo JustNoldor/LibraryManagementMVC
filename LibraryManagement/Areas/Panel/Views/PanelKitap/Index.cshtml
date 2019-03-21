@@ -1,23 +1,9 @@
-﻿
-@model IEnumerable<LibraryManagement.Models.Kategori>
+﻿@model IEnumerable<LibraryManagement.Models.Kitaplar>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Panel/Views/Shared/_LayoutPanel.cshtml";
 }
-
-<!--Datatable jQuery Scripts-->
-@*<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"></script>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>*@
-<!--Sorunlu bootstrap-->
-@*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">*@
-
-<!---->
-
-<!---->
-
-<!---->
 
 <script src="/Scripts/jquery-3.3.1.js"></script>
 <script src="/Scripts/bootstrap.min.js"></script>
@@ -71,33 +57,44 @@
                                 <table id="tablolardata" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
                                     <thead>
                                         <tr>
-                                            <th>Kategori Adı</th>
-                                            <th>Açıklama</th>
+                                            <th>ISBN</th>
+                                            <th>Kitap Adı</th>
+                                            <th>Kitap Açıklama</th>
+                                            <th>Yazarı</th>
+                                            <th>Kategorisi</th>
+                                            <th>Adet</th>
                                             <th>Güncelle</th>
                                             <th>Sil</th>
                                         </tr>
                                     </thead>
 
                                     <tbody>
-                                        @foreach (var category in Model)
+                                        @foreach (var book in Model)
                                         {
-                                            <tr>
-                                                <td>@category.KategoriAdi</td>
-                                                <td>@category.KategoriAciklama</td>
-                                                <td> <a class="btn btn-warning btn-fw" href="/PanelKategori/Guncelle/@category.KategoriID">Güncelle</a></td>
-                                                <td> <a class="btn btn-danger btn-fw btnKategoriSil" style="color:white" data-id="@category.KategoriID" id="silinecek">Sil</a></td>
-                                            </tr>
+                                        <tr>
+                                            <td>@book.ISBN</td>
+                                            <td>@book.KitapAdi</td>
+                                            <td>@book.KitapAciklama</td>
+                                            <td>@book.Yazarlar.YazarAdi @book.Yazarlar.YazarSoyadi</td>
+                                            <td>@book.Kategori.KategoriAdi</td>
+                                            <td>@book.Adet</td>
+
+
+                                            <td> <a class="btn btn-warning btn-fw" href="/PanelKategori/Guncelle/@book.KitapID">Güncelle</a></td>
+                                            <td> <a class="btn btn-danger btn-fw btnKategoriSil" style="color:white" data-id="@book.KitapID" id="silinecek">Sil</a></td>
+                                        </tr>
                                         }
                                     </tbody>
                                 </table>
                             </div>
+                        </div>
                     </div>
+                    <!-- /.box-body -->
                 </div>
-                <!-- /.box-body -->
             </div>
+            <!-- /.col -->
         </div>
-        <!-- /.col -->
+        <!-- /.row -->
     </div>
-    <!-- /.row -->
- </div>
 </section>
+
