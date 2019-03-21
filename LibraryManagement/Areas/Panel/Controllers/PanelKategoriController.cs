@@ -20,6 +20,34 @@ namespace LibraryManagement.Areas.Panel.Controllers
             return View(listcategory);
         }
 
+        //KategoriEkle View'ı oluşturmak için.(Eng:Create category view.)
+        public ActionResult KategoriEkle()
+        {
+            return View();
+        }
+
+        //Kategori Ekleme ve anasayfaya yönlendir. (Eng: Add new category with HttpPost and return Index.)
+        [HttpPost]
+        public ActionResult Ekle(Kategori ktg)
+        {
+            _db.Kategori.Add(ktg);
+            _db.SaveChanges();
+            return RedirectToAction("Index", "PanelKategori", new { area = "Panel" });
+        }
+
+        //Gelen id üzerinden Kategori Silme (Eng: Delete category with getting id)
+        public ActionResult Sil(int id)
+        {
+            var silkategori = _db.Kategori.Find(id);
+            if (silkategori==null)
+            {
+                return HttpNotFound();
+            }
+                _db.Kategori.Remove(silkategori);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+        }
+
 
 
 

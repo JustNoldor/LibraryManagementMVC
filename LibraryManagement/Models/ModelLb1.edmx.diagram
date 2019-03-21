@@ -4,22 +4,22 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b61021ea10e746d0ad9cf5dd650ee44c" Name="Diagram1">
-        <EntityTypeShape EntityType="LibraryDBModel.Emanet" Width="1.5" PointX="5.25" PointY="2.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="LibraryDBModel.Kategori" Width="1.5" PointX="5.25" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="LibraryDBModel.Kitaplar" Width="1.5" PointX="3" PointY="2.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="LibraryDBModel.Rol" Width="1.5" PointX="5.25" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="LibraryDBModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LibraryDBModel.Uye" Width="1.5" PointX="3" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LibraryDBModel.Yazarlar" Width="1.5" PointX="0.75" PointY="2.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="LibraryDBModel.Yonetici" Width="1.5" PointX="3" PointY="11.25" IsExpanded="true" />
-        <AssociationConnector Association="LibraryDBModel.FK_Emanet_Kitaplar" ManuallyRouted="false" />
-        <AssociationConnector Association="LibraryDBModel.FK_Emanet_Uye" ManuallyRouted="false" />
-        <AssociationConnector Association="LibraryDBModel.FK_Emanet_Yonetici" ManuallyRouted="false" />
-        <AssociationConnector Association="LibraryDBModel.FK_Kategori_Kitaplar" ManuallyRouted="false" />
-        <AssociationConnector Association="LibraryDBModel.FK_Kitaplar_Yazarlar" ManuallyRouted="false" />
-        <AssociationConnector Association="LibraryDBModel.FK_Rol_Uye" ManuallyRouted="false" />
-        <AssociationConnector Association="LibraryDBModel.FK_Rol_Yonetici" ManuallyRouted="false" />
+      <Diagram DiagramId="b61021ea10e746d0ad9cf5dd650ee44c" Name="Diagram1" ZoomLevel="47">
+        <EntityTypeShape EntityType="LibraryDBModel.Emanet" Width="1.5" PointX="5.25" PointY="1.125" />
+        <EntityTypeShape EntityType="LibraryDBModel.Kategori" Width="1.5" PointX="0.75" PointY="5.5" />
+        <EntityTypeShape EntityType="LibraryDBModel.Kitaplar" Width="1.5" PointX="3" PointY="1" />
+        <EntityTypeShape EntityType="LibraryDBModel.Rol" Width="1.5" PointX="5.25" PointY="7.875" />
+        <EntityTypeShape EntityType="LibraryDBModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="4.75" />
+        <EntityTypeShape EntityType="LibraryDBModel.Uye" Width="1.5" PointX="3" PointY="6" />
+        <EntityTypeShape EntityType="LibraryDBModel.Yazarlar" Width="1.5" PointX="0.75" PointY="1.5" />
+        <EntityTypeShape EntityType="LibraryDBModel.Yonetici" Width="1.5" PointX="3" PointY="9.5" />
+        <AssociationConnector Association="LibraryDBModel.FK_Emanet_Kitaplar" />
+        <AssociationConnector Association="LibraryDBModel.FK_Emanet_Uye" />
+        <AssociationConnector Association="LibraryDBModel.FK_Emanet_Yonetici" />
+        <AssociationConnector Association="LibraryDBModel.FK_Kitaplar_Kategori" />
+        <AssociationConnector Association="LibraryDBModel.FK_Kitaplar_Yazarlar" />
+        <AssociationConnector Association="LibraryDBModel.FK_Rol_Uye" />
+        <AssociationConnector Association="LibraryDBModel.FK_Rol_Yonetici" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

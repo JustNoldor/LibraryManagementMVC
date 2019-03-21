@@ -14,10 +14,17 @@ namespace LibraryManagement.Models
     
     public partial class Kategori
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Kategori()
+        {
+            this.Kitaplar = new HashSet<Kitaplar>();
+        }
+    
         public int KategoriID { get; set; }
         public string KategoriAdi { get; set; }
         public string KategoriAciklama { get; set; }
     
-        public virtual Kitaplar Kitaplar { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Kitaplar> Kitaplar { get; set; }
     }
 }

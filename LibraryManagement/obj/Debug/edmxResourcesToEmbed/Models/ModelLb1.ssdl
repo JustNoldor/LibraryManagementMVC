@@ -15,7 +15,7 @@
     <Key>
       <PropertyRef Name="KategoriID" />
     </Key>
-    <Property Name="KategoriID" Type="int" Nullable="false" />
+    <Property Name="KategoriID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="KategoriAdi" Type="nvarchar" MaxLength="50" />
     <Property Name="KategoriAciklama" Type="nvarchar(max)" />
   </EntityType>
@@ -115,14 +115,14 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Kategori_Kitaplar">
-    <End Role="Kitaplar" Type="Self.Kitaplar" Multiplicity="1" />
-    <End Role="Kategori" Type="Self.Kategori" Multiplicity="0..1" />
+  <Association Name="FK_Kitaplar_Kategori">
+    <End Role="Kategori" Type="Self.Kategori" Multiplicity="1" />
+    <End Role="Kitaplar" Type="Self.Kitaplar" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Kitaplar">
-        <PropertyRef Name="KitapID" />
+      <Principal Role="Kategori">
+        <PropertyRef Name="KategoriID" />
       </Principal>
-      <Dependent Role="Kategori">
+      <Dependent Role="Kitaplar">
         <PropertyRef Name="KategoriID" />
       </Dependent>
     </ReferentialConstraint>
@@ -184,9 +184,9 @@
       <End Role="Yonetici" EntitySet="Yonetici" />
       <End Role="Emanet" EntitySet="Emanet" />
     </AssociationSet>
-    <AssociationSet Name="FK_Kategori_Kitaplar" Association="Self.FK_Kategori_Kitaplar">
-      <End Role="Kitaplar" EntitySet="Kitaplar" />
+    <AssociationSet Name="FK_Kitaplar_Kategori" Association="Self.FK_Kitaplar_Kategori">
       <End Role="Kategori" EntitySet="Kategori" />
+      <End Role="Kitaplar" EntitySet="Kitaplar" />
     </AssociationSet>
     <AssociationSet Name="FK_Kitaplar_Yazarlar" Association="Self.FK_Kitaplar_Yazarlar">
       <End Role="Yazarlar" EntitySet="Yazarlar" />

@@ -1,0 +1,99 @@
+﻿@model IEnumerable<LibraryManagement.Models.Yazarlar>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Panel/Views/Shared/_LayoutPanel.cshtml";
+}
+
+<!--Datatable jQuery Scripts-->
+@*<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>*@
+<!--Sorunlu bootstrap-->
+@*<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">*@
+
+<!---->
+<!---->
+<!---->
+
+<script src="/Scripts/jquery-3.3.1.js"></script>
+<script src="/Scripts/bootstrap.min.js"></script>
+<script src="/Scripts/bootbox.min.js"></script>
+<!--Bootbox Code-->
+<script>
+    $(function () {
+        $("#tablolardata").on("click", ".btnYazarSil", function () {
+            var btn = $(this);
+            bootbox.confirm("Yazarı Silmek istediğinize emin misiniz?", function (result) {
+                if (result) {
+                    var id = btn.data("id");
+                    $.ajax({
+                        type: "GET",
+                        url: "/PanelYazar/Sil/" + id,
+                        success: function () {
+                            btn.parent().parent().remove()
+                        }
+
+                    });
+                }
+            })
+        });
+    });
+</script>
+
+
+
+<!--Datatable JQuery Code -->
+<script>
+    $(document).ready(function () {
+        $('#tablolardata').DataTable();
+    });
+</script>
+<!---->
+
+
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Yazar Listesi  @Html.ActionLink("Yeni Yazar", "YazarEkle", null, new { @class = "btn btn-success" })</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                        <div class="row"><div class="col-sm-6"></div><div class="col-sm-6"></div></div><div class="row">
+                            <div class="col-sm-12">
+                                <table id="tablolardata" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                                    <thead>
+                                        <tr>
+                                            <th>Yazar Adı</th>
+                                            <th>Yazar Soyadı</th>
+                                            <th>Güncelle</th>
+                                            <th>Sil</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        @foreach (var author in Model)
+                                        {
+                                            <tr>
+                                                <td>@author.YazarAdi</td>
+                                                <td>@author.YazarSoyadi</td>
+                                                <td> <a class="btn btn-warning btn-fw" href="/PanelKategori/Guncelle/@author.YazarID">Güncelle</a></td>
+                                                <td> <a class="btn btn-danger btn-fw btnYazarSil" style="color:white" data-id="@author.YazarID" id="silinecek">Sil</a></td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+</section>
+
