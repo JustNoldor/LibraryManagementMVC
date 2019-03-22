@@ -135,6 +135,8 @@
     <Content Include="Areas\Panel\Views\PanelYazar\YazarEkle.cshtml" />
     <Content Include="Areas\Panel\Views\PanelKitap\Index.cshtml" />
     <Content Include="Areas\Panel\Views\PanelKitap\KitapEkle.cshtml" />
+    <Content Include="Areas\Panel\Views\PanelUye\UyeEkle.cshtml" />
+    <Content Include="Areas\Panel\Views\PanelUye\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootbox.js" />
     <Content Include="Scripts\bootbox.min.js" />
@@ -151,6 +153,7 @@
     <Compile Include="Areas\Panel\Controllers\PanelHomeController.cs" />
     <Compile Include="Areas\Panel\Controllers\PanelKategoriController.cs" />
     <Compile Include="Areas\Panel\Controllers\PanelKitapController.cs" />
+    <Compile Include="Areas\Panel\Controllers\PanelUyeController.cs" />
     <Compile Include="Areas\Panel\Controllers\PanelYazarController.cs" />
     <Compile Include="Areas\Panel\PanelAreaRegistration.cs" />
     <Compile Include="Global.asax.cs">

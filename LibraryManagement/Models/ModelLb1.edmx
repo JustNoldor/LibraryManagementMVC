@@ -60,10 +60,10 @@
           </Key>
           <Property Name="UyeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UyeNo" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Parola" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="UyeAdi" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="UyeSoyadi" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Parola" Type="nvarchar" MaxLength="50" />
+          <Property Name="UyeAdi" Type="nvarchar" MaxLength="50" />
+          <Property Name="UyeSoyadi" Type="nvarchar" MaxLength="50" />
           <Property Name="EklenmeTarihi" Type="datetime" />
         </EntityType>
         <EntityType Name="Yazarlar">
@@ -312,10 +312,10 @@
           </Key>
           <Property Name="UyeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UyeNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Parola" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="UyeAdi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="UyeSoyadi" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Parola" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UyeAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UyeSoyadi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="EklenmeTarihi" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Emanet" Relationship="LibraryDBModel.FK_Emanet_Uye" FromRole="Uye" ToRole="Emanet" />
           <NavigationProperty Name="Rol" Relationship="LibraryDBModel.FK_Rol_Uye" FromRole="Uye" ToRole="Rol" />
