@@ -31,14 +31,15 @@ namespace LibraryManagement.Areas.Panel.Controllers
 
             //Eklenme Tarihi (Eng:Upload Date)
             members.EklenmeTarihi = DateTime.Now;
-            //Özel bir Üye Numarası oluşturur.(Eng:Create special member number)
-            members.UyeNo = "10KTPH" + members.UyeID;
+
+            //members.UyeNo = "10KTPH" + members.UyeID;
             _db.Uye.Add(members);
             _db.SaveChanges();
-
-            var eklenenuye= _db.Uye.Find(members.UyeID);
-            //eklenenuye
-
+            
+            //Özel bir Üye Numarası oluşturur.(Eng:Create special member number)
+            var eklenenuye = _db.Uye.Find(members.UyeID);
+            eklenenuye.UyeNo = "10KTPH" + eklenenuye.UyeID;
+            _db.SaveChanges();
 
             return RedirectToAction("Index", "PanelUye", new { area = "Panel" });
         }

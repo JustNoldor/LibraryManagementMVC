@@ -59,7 +59,7 @@
             <PropertyRef Name="UyeID" />
           </Key>
           <Property Name="UyeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UyeNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="UyeNo" Type="nvarchar" MaxLength="50" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
           <Property Name="Parola" Type="nvarchar" MaxLength="50" />
           <Property Name="UyeAdi" Type="nvarchar" MaxLength="50" />
@@ -311,7 +311,7 @@
             <PropertyRef Name="UyeID" />
           </Key>
           <Property Name="UyeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UyeNo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UyeNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Parola" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UyeAdi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />

@@ -54,7 +54,7 @@
       <PropertyRef Name="UyeID" />
     </Key>
     <Property Name="UyeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="UyeNo" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UyeNo" Type="nvarchar" MaxLength="50" />
     <Property Name="Email" Type="nvarchar" MaxLength="50" />
     <Property Name="Parola" Type="nvarchar" MaxLength="50" />
     <Property Name="UyeAdi" Type="nvarchar" MaxLength="50" />
